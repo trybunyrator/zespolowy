@@ -8,6 +8,8 @@ import controllers.models.Comment;
 import controllers.models.Post;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,17 +36,17 @@ public class MyController {
 
     // wyświetlanie wszystkich kategorii
     @RequestMapping(value = "/getAllCategory", method = RequestMethod.GET)
-    public String getAllCategory() {
+    public List<Category> getAllCategory() {
         System.out.println(personDataBase.categoryRepository.findAll());
-        return "getAllCategory";
+        return personDataBase.categoryRepository.findAll();
     }
 
     // wyświetlanie komentarzy do danego id posta - UWAGA - NIE PODKOMENTARZY
     // (IDPARENT NULL)
     @RequestMapping(value = "/commentsPost/{id}", method = RequestMethod.GET)
-    public String getCommentsPost(@PathVariable("id") Post id) {
+    public List<Comment> getCommentsPost(@PathVariable("id") Post id) {
         System.out.println(personDataBase.commentRepository.findAllByIdPostIsAndIdParentNull(id));
-        return "CommentsPost/{id}";
+        return personDataBase.commentRepository.findAllByIdPostIsAndIdParentNull(id);
     }
 
     // wyświetlanie komentarzy do DANEGO KOMENTARZA
