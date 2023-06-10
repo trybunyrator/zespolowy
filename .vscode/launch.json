@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-Application<restdb>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "controllers.Application",
+      "projectName": "restdb",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
